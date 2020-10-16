@@ -14,6 +14,7 @@ namespace AsmAppDev2.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        //Create bridges between entities and databases
         ApplicationDbContext context;
 
         public AccountController()
@@ -74,6 +75,7 @@ namespace AsmAppDev2.Controllers
 
             // This doesn't count login failures towards account lockout    
             // To enable password failures to trigger account lockout, change to shouldLockout: true    
+            // Login with UserName instead of Email
             var result = await SignInManager.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe, shouldLockout: false);
             switch (result)
             {
@@ -138,6 +140,7 @@ namespace AsmAppDev2.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
+            // Select a list of Roles to display
             ViewBag.Name = new SelectList(context.Roles.ToList(), "Name", "Name");
             return View();
         }
@@ -151,8 +154,11 @@ namespace AsmAppDev2.Controllers
         {
             if (ModelState.IsValid)
             {
+                // Declare a new account in the ApplicationUser table including: UserName, Email
                 var user = new ApplicationUser { UserName = model.UserName, Email = model.Email };
+                // Function of creating accounts and syncing accounts to users table
                 var result = await UserManager.CreateAsync(user, model.Password);
+                // Set the test condition successfully or not
                 if (result.Succeeded)
                 {
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
@@ -167,6 +173,7 @@ namespace AsmAppDev2.Controllers
                     //Ends Here     
                     return RedirectToAction("Index", "Admins");
                 }
+                // The starting point transfers data from AccountController to View / Register (Role)
                 ViewBag.Name = new SelectList(context.Roles.Where(u => !u.Name.Contains("Admin"))
                                           .ToList(), "Name", "Name");
                 AddErrors(result);

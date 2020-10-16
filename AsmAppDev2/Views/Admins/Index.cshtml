@@ -16,7 +16,7 @@
     </tr>
 
     @foreach (var user in Model)
-    {
+     {
         <tr>
             <td>@user.Username</td>
             <td>@user.Email</td>
@@ -24,5 +24,5 @@
             <td>@Html.ActionLink("Delete this user", "Delete", new { id = user.UserId })</td>
             <td>@Html.ActionLink("Edit this user", "Edit", new { id = user.UserId })</td>
         </tr>
-    }
+     }
 </table>
