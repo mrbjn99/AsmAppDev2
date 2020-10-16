@@ -3,6 +3,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -137,11 +138,23 @@ namespace AsmAppDev2.Controllers
 
         //
         // GET: /Account/Register
-        [AllowAnonymous]
+        [Authorize(Roles = "Admin")]
         public ActionResult Register()
         {
-            // Select a list of Roles to display
-            ViewBag.Name = new SelectList(context.Roles.ToList(), "Name", "Name");
+            // Admin can create Role of Trainer and Training Staff
+            if (User.IsInRole("Admin"))
+            {
+                // Listed in the role the lists except Admin and Trainee Role.
+                ViewBag.Name = new SelectList(context.Roles.Where(u => !u.Name.Contains("Admin") && !u.Name.Contains("Trainee"))
+                                    .ToList(), "Name", "Name");
+            }
+            // Staff can create Role of trainee
+            else if (User.IsInRole("TrainingStaff"))
+            {
+            // Listed in the role the lists except Admin, Trainer and Staff Role. 
+                ViewBag.Name = new SelectList(context.Roles.Where(u => !u.Name.Contains("Admin") && !u.Name.Contains("Trainer") && !u.Name.Contains("Staff"))
+                                    .ToList(), "Name", "Name");
+            }
             return View();
         }
 

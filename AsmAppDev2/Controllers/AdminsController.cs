@@ -15,35 +15,32 @@ namespace AsmAppDev2.Controllers
         {
             _context = new ApplicationDbContext();
         }
+
         //Get: Manage user
         public ActionResult Index()
         {
-            var userwithRoles = (from user in _context.Users
-                                 select new
-                                 {
-                                     UserId = user.Id,
-                                     Username = user.UserName,
-                                     EmailAddress = user.Email,
-                                     Password = user.PasswordHash,
-                                     RolesName = (from userRole in user
-                                                  .Roles
-                                                  join role in _context
-                                           .Roles on userRole
-                                           .RoleId equals role
-                                           .Id
-                                                  select role.Name).ToList()
-
-
-                                 }).ToList().Select(u => new UserInRoles()
-                                 {
-                                     UserId = u.UserId,
-                                     Username = u.Username,
-                                     Email = u.EmailAddress,
-                                     Role = string.Join(",", u.RolesName)
-                                 });
-            return View(userwithRoles);
+            var usersWithRoles = (from user in _context.Users  
+                                  select new  
+                                  {  
+                                      UserId = user.Id,                                        
+                                      Username = user.UserName,  
+                                      EmailAddress = user.Email,  
+                                      RoleNames = (from userRole in user.Roles  
+                                                   join role in _context.Roles on userRole.RoleId   
+                                                   equals role.Id  
+                                                   select role.Name).ToList()  
+                                  }).ToList().Select(u => new UserInRoles()  
+   
+                                  {  
+                                      UserId = u.UserId,  
+                                      Username = u.Username,  
+                                      Email = u.EmailAddress,  
+                                      Role = string.Join(",", u.RoleNames)  
+                                  });  
+   
+   
+            return View(usersWithRoles);  
         }
-
 
         //Delete admin role
         [HttpGet]
@@ -62,7 +59,6 @@ namespace AsmAppDev2.Controllers
 
         //Edit admin role
         [HttpGet]
-
         public ActionResult Edit(string id)
         {
             // Find and assign the Id value in the Users table to userInDb
@@ -74,8 +70,8 @@ namespace AsmAppDev2.Controllers
 
             return View(userInDb);
         }
-        [HttpPost]
 
+        [HttpPost]
         public ActionResult Edit(ApplicationUser user)
         {
             // Check the value of Id
@@ -96,4 +92,5 @@ namespace AsmAppDev2.Controllers
             return RedirectToAction("Index");
         }
     }
+    
 }
