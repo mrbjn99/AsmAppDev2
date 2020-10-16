@@ -138,7 +138,7 @@ namespace AsmAppDev2.Controllers
 
         //
         // GET: /Account/Register
-        [Authorize(Roles = "Admin")]
+        [Authorize]
         public ActionResult Register()
         {
             // Admin can create Role of Trainer and Training Staff
@@ -149,7 +149,7 @@ namespace AsmAppDev2.Controllers
                                     .ToList(), "Name", "Name");
             }
             // Staff can create Role of trainee
-            else if (User.IsInRole("TrainingStaff"))
+            else if (User.IsInRole("Staff"))
             {
             // Listed in the role the lists except Admin, Trainer and Staff Role. 
                 ViewBag.Name = new SelectList(context.Roles.Where(u => !u.Name.Contains("Admin") && !u.Name.Contains("Trainer") && !u.Name.Contains("Staff"))
