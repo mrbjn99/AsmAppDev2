@@ -138,7 +138,6 @@ namespace AsmAppDev2.Controllers
 
         //
         // GET: /Account/Register
-        [Authorize]
         public ActionResult Register()
         {
             // Admin can create Role of Trainer and Training Staff
