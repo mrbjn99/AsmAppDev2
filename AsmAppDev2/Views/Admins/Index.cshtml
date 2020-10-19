@@ -1,0 +1,28 @@
+﻿@model IEnumerable<AsmAppDev2.ViewModels.UserInRoles>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Welcome Admin Handsome</h2>
+@Html.ActionLink("Create a new account", "Register", "Account")
+<h2><center>List of Staff and Trainer Account</center></h2>
+<table class="table table-striped">
+    <tr>
+        <th>User Name</th>
+        <th>Email</th>
+        <th>Name of Role</th>
+        <th>Delete</th>
+        <th>Edit</th>
+    </tr>
+
+    @foreach (var user in Model)
+     {
+        <tr>
+            <td>@user.Username</td>
+            <td>@user.Email</td>
+            <td>@user.Role</td>
+            <td>@Html.ActionLink("Delete this user", "Delete", new { id = user.UserId })</td>
+            <td>@Html.ActionLink("Edit this user", "Edit", new { id = user.UserId })</td>
+        </tr>
+     }
+</table>

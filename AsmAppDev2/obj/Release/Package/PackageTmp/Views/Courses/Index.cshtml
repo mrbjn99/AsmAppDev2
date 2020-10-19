@@ -1,0 +1,36 @@
+﻿@model IEnumerable<AsmAppDev2.Models.Course>
+@{
+	ViewBag.Title = "Index";
+}
+
+<h2>Course</h2>
+
+@if (User.IsInRole("Staff"))
+{
+	<p>@Html.ActionLink("Create New", "Create")</p>
+}
+<table class="table">
+	<tr>
+		<th>Name Course</th>
+
+		<th>Name Category</th>
+
+		<th>Name Topic</th>
+	</tr>
+
+	@foreach (var courses in Model)
+	{
+		<tr>
+			<td>@courses.Name_Course</td>
+			<td>@courses.Category.Name_Category</td>
+			<td>@courses.Topic.Name_Topic</td>
+			@if (User.IsInRole("Staff"))
+			{
+				<td>@Html.ActionLink("Edit", "Edit", new { id = courses.ID })</td>
+				<td>@Html.ActionLink("Delete", "Delete", new { id = courses.ID })</td>
+			}
+		</tr>
+	}
+
+
+</table>

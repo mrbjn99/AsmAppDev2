@@ -1,0 +1,29 @@
+﻿@model IEnumerable<AsmAppDev2.Models.Topic>
+@{
+	ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+@if (User.IsInRole("Staff"))
+{
+	<p>@Html.ActionLink("Create New Topic", "Create")</p>
+}
+<table class="table">
+	<tr>
+		<th>Name_Topic</th>
+		<th>Description</th>
+	</tr>
+
+	@foreach (var topic in Model)
+	{
+		<tr>
+			<td>@topic.Name_Topic</td>
+			<td>@topic.Description</td>
+			@if (User.IsInRole("Staff"))
+			{
+			<td>@Html.ActionLink("Edit", "Edit", new { Id = topic.ID })</td>
+			<td>@Html.ActionLink("Delete", "Delete", new { Id = topic.ID })</td>
+			}
+		</tr>
+	}
+</table>

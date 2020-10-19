@@ -1,0 +1,24 @@
+﻿@model IEnumerable<AsmAppDev2.Models.AssignTrainertoTopic>
+@{
+	ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+
+	<p>@Html.ActionLink("Assign Trainer to Topic", "Create")</p>
+
+<table class="table">
+	<tr>
+		<th>Trainer</th>
+		<th>Topic</th>
+	</tr>
+
+	@foreach (var assign in Model)
+	{
+		<tr>
+			<td>@assign.Trainer.UserName</td>
+			<td>@assign.Topic.Name_Topic</td>
+		</tr>
+	}
+</table>

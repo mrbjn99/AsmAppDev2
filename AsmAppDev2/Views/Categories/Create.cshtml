@@ -1,0 +1,36 @@
+﻿@model AsmAppDev2.Models.Category
+@{
+	ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+@using (Html.BeginForm())
+{
+	@Html.AntiForgeryToken()
+	<div class=" form-horizontal">
+		<h4>Category</h4>
+		<hr />
+		@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+		<div class="form-group">
+			@Html.LabelFor(c => c.Name_Category)
+				@Html.EditorFor(c => c.Name_Category, new { htmlAttributes = new { @class = "form-control" } })
+				@Html.ValidationMessageFor(c => c.Name_Category, "", new { @class = "text-danger" })
+			</div>
+
+		<div class="form-group">
+			@Html.LabelFor(c => c.Description)
+				@Html.EditorFor(c => c.Description, new { htmlAttributes = new { @class = "form-control" } })
+				@Html.ValidationMessageFor(c => c.Description, "", new { @class = "text-danger" })
+			</div>
+
+		<div class="form-group">
+			<div class="col-md-offset-2 col-md-10">
+				<input type="submit" value="Create" class="btn btn-default" />
+			</div>
+		</div>
+	</div>
+}
+
+<div>
+	@Html.ActionLink("Back to List", "Index")
+</div>

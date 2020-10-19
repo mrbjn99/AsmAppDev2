@@ -1,0 +1,48 @@
+﻿@model IEnumerable<AsmAppDev2.Models.Trainee>
+@{
+	ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@if (User.IsInRole("Staff"))
+{
+<p>@Html.ActionLink("create a new trainee account", "Register", "Account")</p>
+}
+<table class="table">
+	<tr>
+		<th>Full_Name</th>
+		<th>Email</th>
+		<th>Education</th>
+		<th>Programming Language</th>
+		<th>Experience Details</th>
+		<th>Department</th>
+		<th>Phone</th>
+	</tr>
+
+	@foreach (var trainee in Model)
+	{
+<tr>
+	<td>@trainee.Full_Name</td>
+	<td>@trainee.Email</td>
+	<td>@trainee.Education</td>
+	<td>@trainee.Programming_Language</td>
+	<td>@trainee.Experience_Details</td>
+	<td>@trainee.Department</td>
+	<td>@trainee.Phone</td>
+	@if (User.IsInRole("Staff"))
+	{
+		<td>@Html.ActionLink("Edit", "Edit", new { id = trainee.TraineeID })</td>
+		<td>@Html.ActionLink("Details", "Details", new { id = trainee.TraineeID })</td>
+		<td>@Html.ActionLink("Delete", "Delete", new { id = trainee.TraineeID })</td>
+	}
+	@if (User.IsInRole("Trainee"))
+	{
+		<td>@Html.ActionLink("Edit", "Edit", new { id = trainee.TraineeID })</td>
+		<td>@Html.ActionLink("Details", "Details", new { id = trainee.TraineeID })</td>
+	}
+</tr>
+	}
+
+</table>
+

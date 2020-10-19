@@ -1,0 +1,36 @@
+﻿@model IEnumerable<AsmAppDev2.Models.Trainer>
+
+@{ 
+	ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+@if (User.IsInRole("Admin"))
+{
+<p>@Html.ActionLink("Create a new Trainer account", "Register", "Account")</p>
+}
+<table class="table">
+	<tr>
+		<th>Full_Name</th>
+		<th>Email</th>
+		<th>Working Place</th>
+		<th>Phone</th>
+	</tr>
+
+	@foreach (var trainer in Model)
+	{
+	<tr>
+		<td>@trainer.Full_Name</td>
+		<td>@trainer.Email</td>
+		<td>@trainer.Working_Place</td>
+		<td>@trainer.Phone</td>
+	@if (User.IsInRole("Staff"))
+		{
+			<td>@Html.ActionLink("Edit", "Edit", new { id = trainer.TrainerID })</td>
+			<td>@Html.ActionLink("Details", "Details", new { id = trainer.TrainerID })</td>
+			<td>@Html.ActionLink("Delete", "Delete", new { id = trainer.TrainerID })</td>
+		}
+</tr>
+	}
+
+</table>
