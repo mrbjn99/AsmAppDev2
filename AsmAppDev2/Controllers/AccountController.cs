@@ -3,7 +3,6 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using System.Linq;
-using System.Net;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -150,7 +149,7 @@ namespace AsmAppDev2.Controllers
             // Staff can create Role of trainee
             else if (User.IsInRole("Staff"))
             {
-            // Listed in the role the lists except Admin, Trainer and Staff Role. 
+                // Listed in the role the lists except Admin, Trainer and Staff Role. 
                 ViewBag.Name = new SelectList(context.Roles.Where(u => !u.Name.Contains("Admin") && !u.Name.Contains("Trainer") && !u.Name.Contains("Staff"))
                                     .ToList(), "Name", "Name");
             }
@@ -183,7 +182,15 @@ namespace AsmAppDev2.Controllers
                     //Assign Role to user Here       
                     await this.UserManager.AddToRoleAsync(user.Id, model.Name);
                     //Ends Here     
-                    return RedirectToAction("Index", "Admins");
+                    if (Request.IsAuthenticated && User.IsInRole("Admin"))
+                    {
+                        return RedirectToAction("Index", "Admins");
+                    }
+                    if (Request.IsAuthenticated && User.IsInRole("Staff"))
+                    {
+                        return RedirectToAction("Index", "StaffViewModels");
+
+                    }
                 }
                 // The starting point transfers data from AccountController to View / Register (Role)
                 ViewBag.Name = new SelectList(context.Roles.Where(u => !u.Name.Contains("Admin"))
