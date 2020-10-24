@@ -214,3 +214,12 @@ C:\Users\admin\Source\Repos\AsmAppDev22\AsmAppDev2\obj\Debug\AsmAppDev2.csproj.C
 C:\Users\admin\Source\Repos\AsmAppDev22\AsmAppDev2\obj\Debug\AsmAppDev2.csproj.CopyComplete
 C:\Users\admin\Source\Repos\AsmAppDev22\AsmAppDev2\obj\Debug\AsmAppDev2.dll
 C:\Users\admin\Source\Repos\AsmAppDev22\AsmAppDev2\obj\Debug\AsmAppDev2.pdb
+C:\Users\admin\Source\Repos\AsmAppDev22\AsmAppDev2\obj\Debug\AsmAppDev2.Migrations.InitialCreate.resources
+C:\Users\admin\Source\Repos\AsmAppDev22\AsmAppDev2\obj\Debug\AsmAppDev2.csproj.GenerateResource.cache
+C:\Users\admin\Source\Repos\AsmAppDev22\AsmAppDev2\obj\Debug\AsmAppDev2.Migrations.AddCategory.resources
+C:\Users\admin\Source\Repos\AsmAppDev22\AsmAppDev2\obj\Debug\AsmAppDev2.Migrations.AddCourse.resources
+C:\Users\admin\Source\Repos\AsmAppDev22\AsmAppDev2\obj\Debug\AsmAppDev2.Migrations.AddTopic.resources
+C:\Users\admin\Source\Repos\AsmAppDev22\AsmAppDev2\obj\Debug\AsmAppDev2.Migrations.AddTraineeUser.resources
+C:\Users\admin\Source\Repos\AsmAppDev22\AsmAppDev2\obj\Debug\AsmAppDev2.Migrations.AddTrainerUser.resources
+C:\Users\admin\Source\Repos\AsmAppDev22\AsmAppDev2\obj\Debug\AsmAppDev2.Migrations.AddTraineetoCourse.resources
+C:\Users\admin\Source\Repos\AsmAppDev22\AsmAppDev2\obj\Debug\AsmAppDev2.Migrations.AddTrainertoTopic.resources

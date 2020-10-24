@@ -189,7 +189,6 @@ namespace AsmAppDev2.Controllers
                     if (Request.IsAuthenticated && User.IsInRole("Staff"))
                     {
                         return RedirectToAction("Index", "StaffViewModels");
-
                     }
                 }
                 // The starting point transfers data from AccountController to View / Register (Role)

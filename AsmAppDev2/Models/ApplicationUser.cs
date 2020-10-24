@@ -1,8 +1,8 @@
-﻿using System.Data.Entity;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace AsmAppDev2.Models
 {
@@ -26,7 +26,14 @@ namespace AsmAppDev2.Models
             : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<Course> Courses { get; set; }
+        public DbSet<Topic> Topics { get; set; }
 
+        public DbSet<TraineeUser> TraineeUsers { get; set; }
+        public DbSet<TrainerUser> TrainerUsers { get; set; }
+        public DbSet<AssignTraineetoCourse> AssignTraineetoCourses { get; set; }
+        public DbSet<AssignTrainertoTopic> AssignTrainertoTopics { get; set; }
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();

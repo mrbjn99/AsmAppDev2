@@ -169,17 +169,67 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminsController.cs" />
+    <Compile Include="Controllers\AssignTraineetoCoursesController.cs" />
+    <Compile Include="Controllers\AssignTrainertoTopicsController.cs" />
+    <Compile Include="Controllers\CategoriesController.cs" />
+    <Compile Include="Controllers\CoursesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
+    <Compile Include="Controllers\TopicsController.cs" />
+    <Compile Include="Controllers\TraineeUsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202010140318568_InitialCreate.cs" />
+    <Compile Include="Migrations\202010140318568_InitialCreate.Designer.cs">
+      <DependentUpon>202010140318568_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010241302560_AddCategory.cs" />
+    <Compile Include="Migrations\202010241302560_AddCategory.Designer.cs">
+      <DependentUpon>202010241302560_AddCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010241304021_AddCourse.cs" />
+    <Compile Include="Migrations\202010241304021_AddCourse.Designer.cs">
+      <DependentUpon>202010241304021_AddCourse.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010241305018_AddTopic.cs" />
+    <Compile Include="Migrations\202010241305018_AddTopic.Designer.cs">
+      <DependentUpon>202010241305018_AddTopic.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010241305380_AddTraineeUser.cs" />
+    <Compile Include="Migrations\202010241305380_AddTraineeUser.Designer.cs">
+      <DependentUpon>202010241305380_AddTraineeUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010241306089_AddTrainerUser.cs" />
+    <Compile Include="Migrations\202010241306089_AddTrainerUser.Designer.cs">
+      <DependentUpon>202010241306089_AddTrainerUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010241306383_AddTraineetoCourse.cs" />
+    <Compile Include="Migrations\202010241306383_AddTraineetoCourse.Designer.cs">
+      <DependentUpon>202010241306383_AddTraineetoCourse.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010241307053_AddTrainertoTopic.cs" />
+    <Compile Include="Migrations\202010241307053_AddTrainertoTopic.Designer.cs">
+      <DependentUpon>202010241307053_AddTrainertoTopic.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\AssignTraineetoCourse.cs" />
+    <Compile Include="Models\AssignTrainertoTopic.cs" />
+    <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\Course.cs" />
+    <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Topic.cs" />
+    <Compile Include="Models\TraineeUser.cs" />
+    <Compile Include="Models\TrainerUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\AssignTraineetoCourseViewModel.cs" />
+    <Compile Include="ViewModels\AssignTrainertoTopicViewModel.cs" />
+    <Compile Include="ViewModels\CourseCategoryViewModel.cs" />
+    <Compile Include="ViewModels\CourseTopicViewModel.cs" />
     <Compile Include="ViewModels\UserInRoles.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -243,6 +293,20 @@
     <Content Include="Views\Roles\Create.cshtml" />
     <Content Include="Views\Admins\Index.cshtml" />
     <Content Include="Views\Admins\Edit.cshtml" />
+    <Content Include="Views\AssignTraineetoCourses\Index.cshtml" />
+    <Content Include="Views\AssignTraineetoCourses\Create.cshtml" />
+    <Content Include="Views\AssignTrainertoTopics\Index.cshtml" />
+    <Content Include="Views\AssignTrainertoTopics\Create.cshtml" />
+    <Content Include="Views\Categories\Index.cshtml" />
+    <Content Include="Views\Categories\Create.cshtml" />
+    <Content Include="Views\Categories\Edit.cshtml" />
+    <Content Include="Views\Courses\Index.cshtml" />
+    <Content Include="Views\Courses\Create.cshtml" />
+    <Content Include="Views\Courses\Edit.cshtml" />
+    <Content Include="Views\Topics\Index.cshtml" />
+    <Content Include="Views\Topics\Create.cshtml" />
+    <Content Include="Views\Topics\Edit.cshtml" />
+    <Content Include="Views\TraineeUsers\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -259,6 +323,32 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202010140318568_InitialCreate.resx">
+      <DependentUpon>202010140318568_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010241302560_AddCategory.resx">
+      <DependentUpon>202010241302560_AddCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010241304021_AddCourse.resx">
+      <DependentUpon>202010241304021_AddCourse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010241305018_AddTopic.resx">
+      <DependentUpon>202010241305018_AddTopic.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010241305380_AddTraineeUser.resx">
+      <DependentUpon>202010241305380_AddTraineeUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010241306089_AddTrainerUser.resx">
+      <DependentUpon>202010241306089_AddTrainerUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010241306383_AddTraineetoCourse.resx">
+      <DependentUpon>202010241306383_AddTraineetoCourse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010241307053_AddTrainertoTopic.resx">
+      <DependentUpon>202010241307053_AddTrainertoTopic.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

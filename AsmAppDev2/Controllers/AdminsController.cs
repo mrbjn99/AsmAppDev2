@@ -19,7 +19,7 @@ namespace AsmAppDev2.Controllers
         //Get: Manage user
         public ActionResult Index()
         {
-            var userInfor = (from user in _context.Users
+            var useradmin = (from user in _context.Users
                              select new
                              /*FROM-IN: xác định nguồn dữ liệu truy vấn (Users). 
                              Nguồn dữ liệu tập hợp những phần tử thuộc kiểu lớp triển khai giao diện IEnumrable*/
@@ -34,7 +34,7 @@ namespace AsmAppDev2.Controllers
                                              join role in _context.Roles //JOIN-IN: chỉ ra nguồn kết nối vs nguồn của FROM   
                                              on userRole.RoleId          //ON: chỉ ra sự ràng buộc giữa các phần tử  
                                              equals role.Id              //EQUALS: chỉ ra căn cứ vs ràng buộc (userRole.RoleId ~~ role.Id)
-                                             select role.Name).ToList()  //==> chọn name Role đưa ra list
+                                             select role.Name).ToList()  // chọn name Role đưa ra list
                              }
                              ).ToList().Select(p => new UserInRoles()    // ViewModel
                              {
@@ -46,7 +46,7 @@ namespace AsmAppDev2.Controllers
 
                              }
                                                 );
-            return View(userInfor);
+            return View(useradmin);
         }
 
         //Delete admin role
