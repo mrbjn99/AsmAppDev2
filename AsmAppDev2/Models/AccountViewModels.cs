@@ -90,7 +90,6 @@ namespace AsmAppDev2.Models
        
         public string ConfirmPassword { get; set; }
 
-        
         public string Name { get; set; }
     }
 

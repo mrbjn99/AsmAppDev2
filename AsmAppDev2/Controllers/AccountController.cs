@@ -165,8 +165,8 @@ namespace AsmAppDev2.Controllers
         {
             if (ModelState.IsValid)
             {
-                // Declare a new account in the ApplicationUser table including: UserName, Email
-                var user = new ApplicationUser { UserName = model.UserName, Email = model.Email };
+                // Declare a new account in the ApplicationUser table including: UserName, Email, Phonenumber
+                var user = new ApplicationUser { UserName = model.UserName, Email = model.Email, PhoneNumber = model.PhoneNumber };
                 // Function of creating accounts and syncing accounts to users table
                 var result = await UserManager.CreateAsync(user, model.Password);
                 // Set the test condition successfully or not

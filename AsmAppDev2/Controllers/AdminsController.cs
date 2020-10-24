@@ -28,7 +28,7 @@ namespace AsmAppDev2.Controllers
                                  UserId = user.Id,
                                  Username = user.UserName,
                                  Emailaddress = user.Email,
-                                 Phone = user.PhoneNumber,
+                                 Phonenumber = user.PhoneNumber,
                                  RoleName = (from userRole in user.Roles
                                                  //JOIN kết hợp 2 trường dữ liệu tương ứng
                                              join role in _context.Roles //JOIN-IN: chỉ ra nguồn kết nối vs nguồn của FROM   
@@ -41,7 +41,7 @@ namespace AsmAppDev2.Controllers
                                  UserId = p.UserId,
                                  Username = p.Username,
                                  Email = p.Emailaddress,
-                                 PhoneNumber = p.Phone,
+                                 setPhone = p.Phonenumber,
                                  Role = string.Join(",", p.RoleName)  //  nối list roleName bởi dấu ,
 
                              }
@@ -94,6 +94,7 @@ namespace AsmAppDev2.Controllers
             }
             userInDb.UserName = user.UserName;
             userInDb.Email = user.Email;
+            userInDb.PhoneNumber = user.PhoneNumber;
             _context.SaveChanges();
 
             return RedirectToAction("Index");
