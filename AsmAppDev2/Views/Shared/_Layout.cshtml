@@ -8,7 +8,9 @@
     @Scripts.Render("~/bundles/modernizr")
 
 </head>
-<body>
+<body style="background-image: url(Image/2.jpg);
+        background-repeat: no-repeat;
+        background-size: 100%;">
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -17,14 +19,13 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("FPT SYSTEM", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>                    
                     <li>@Html.ActionLink("Role", "Index", "Roles")</li>
                     <li>@Html.ActionLink("Manage User", "Index", "Admins")
-</ul>
+                </ul>
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
